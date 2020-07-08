@@ -11,7 +11,13 @@ spring:
         username: root
         password: 3306
 
-
 mybatis:
     mapper-locations: classpath:mybatis/mapper/*.xml
     type-aliases-package: com.toolmanclub.springcloud.com.toolmanclub.springboot.entities
+
+eureka:
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
