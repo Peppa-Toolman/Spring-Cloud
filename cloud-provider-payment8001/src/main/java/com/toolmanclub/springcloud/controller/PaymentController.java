@@ -5,9 +5,13 @@ import com.toolmanclub.springcloud.entities.Payment;
 import com.toolmanclub.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * 订单 Controller
@@ -20,10 +24,14 @@ import javax.annotation.Resource;
 @RequestMapping("payment")
 public class PaymentController {
 
+    private static final String SERVICE_ID = "CLOUD-PAYMENT-SERVICE";
+
     @Resource
-    private PaymentService paymentService;
+    private PaymentService  paymentService;
     @Value("${server.port}")
-    private String         serverPort;
+    private String          serverPort;
+    @Resource
+    private DiscoveryClient discoveryClient;
 
     @PostMapping(value = "/save")
     public CommonResult<Integer> save(@RequestBody Payment payment) {
@@ -45,5 +53,25 @@ public class PaymentController {
         } else {
             return new CommonResult<>(444, "没有对应记录,查询id: " + id, null);
         }
+    }
+
+    @GetMapping("/discovery")
+    public Object discovery() {
+        // 查看所有的服务
+        List<String> services = discoveryClient.getServices();
+        services.forEach(service -> log.info("****element" + service));
+        // 获取所有的实例
+        List<ServiceInstance> instances = discoveryClient.getInstances(SERVICE_ID);
+        instances.forEach(instance -> log.info(instance.getServiceId() + "\t" + instance.getHost() + "\t" + instance.getPort() + "\t" + instance.getUri()));
+        /*
+        <EurekaDiscoveryClient>
+            <services>
+            <services>cloud-payment-service</services>
+            <services>cloud-order-service</services>
+            </services>
+            <order>0</order>
+        </EurekaDiscoveryClient>
+         */
+        return this.discoveryClient;
     }
 }
