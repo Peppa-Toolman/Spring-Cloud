@@ -14,4 +14,4 @@ spring:
 
 mybatis:
     mapper-locations: classpath:mybatis/mapper/*.xml
-    type-aliases-package: com.toolmanclub.springcloud.entities
+    type-aliases-package: com.toolmanclub.springcloud.com.toolmanclub.springboot.entities
