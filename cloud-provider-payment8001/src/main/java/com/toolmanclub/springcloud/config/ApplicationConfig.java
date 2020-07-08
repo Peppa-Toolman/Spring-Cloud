@@ -5,13 +5,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * mybatis 配置
+ * 配置
  *
  * @author Yujie Wang
  * @date 2020/7/8 2:17
  */
 @Configuration
-public class MybatisConfig {
+public class ApplicationConfig {
 
     @Bean
     public ConfigurationCustomizer configurationCustomizer() {

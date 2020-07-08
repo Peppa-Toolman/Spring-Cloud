@@ -4,10 +4,7 @@ import com.toolmanclub.springcloud.entities.CommonResult;
 import com.toolmanclub.springcloud.entities.Payment;
 import com.toolmanclub.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -19,13 +16,14 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @RestController
+@RequestMapping("payment")
 public class PaymentController {
 
     @Resource
     private PaymentService paymentService;
 
-    @PostMapping(value = "/payment/save")
-    public CommonResult<Integer> save(Payment payment) {
+    @PostMapping(value = "/save")
+    public CommonResult<Integer> save(@RequestBody Payment payment) {
         int result = paymentService.save(payment);
         log.info("*****插入结果:" + result);
         if (result == 1) {
@@ -35,7 +33,7 @@ public class PaymentController {
         }
     }
 
-    @GetMapping(value = "/payment/get/{id}")
+    @GetMapping(value = "/get/{id}")
     public CommonResult<Payment> save(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         log.info("*****查询结果:" + payment);
