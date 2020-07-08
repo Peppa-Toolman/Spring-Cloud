@@ -15,6 +15,6 @@ public class ApplicationConfig {
 
     @Bean
     public ConfigurationCustomizer configurationCustomizer() {
-        return configuration -> configuration.setCacheEnabled(true);
+        return configuration -> configuration.setMapUnderscoreToCamelCase(true);
     }
 }
