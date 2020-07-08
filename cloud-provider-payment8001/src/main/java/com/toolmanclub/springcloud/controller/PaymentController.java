@@ -24,7 +24,7 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
-    @PostMapping(value = "/payment/create")
+    @PostMapping(value = "/payment/save")
     public CommonResult<Integer> save(Payment payment) {
         int result = paymentService.save(payment);
         log.info("*****插入结果:" + result);
