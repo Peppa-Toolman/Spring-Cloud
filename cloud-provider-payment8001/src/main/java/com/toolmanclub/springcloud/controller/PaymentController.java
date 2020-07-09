@@ -44,7 +44,7 @@ public class PaymentController {
     }
 
     @GetMapping(value = "/get/{id}")
-    public CommonResult<Payment> save(@PathVariable("id") Long id) {
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         log.info("*****查询结果:" + payment + ";serverPort:" + serverPort);
         if (payment != null) {
@@ -72,5 +72,10 @@ public class PaymentController {
         </EurekaDiscoveryClient>
          */
         return this.discoveryClient;
+    }
+
+    @GetMapping("/lb")
+    public String getPaymentLb() {
+        return serverPort;
     }
 }
