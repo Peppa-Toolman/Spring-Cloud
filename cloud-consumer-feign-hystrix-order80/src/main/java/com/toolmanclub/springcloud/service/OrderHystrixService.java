@@ -4,13 +4,15 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.concurrent.TimeUnit;
-
 /**
+ * 客户端会遇到的异常
+ * 运行;超时;宕机
+ *
  * @author Yujie Wang
  * @date 2020/7/10 17:06
  */
-@FeignClient("CLOUD-PROVIDER-HYSTRIX-PAYMENT")
+// fallback = PaymentFallbackService.class,PaymentFallbackService实现其Service类,在实现类中进行服务降级
+@FeignClient(value = "CLOUD-PROVIDER-HYSTRIX-PAYMENT", fallback = PaymentFallbackService.class)
 public interface OrderHystrixService {
 
     /**
