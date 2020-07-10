@@ -17,6 +17,4 @@ public interface LoadBalancer {
      * @return {@link ServiceInstance}
      */
     ServiceInstance instances(List<ServiceInstance> serviceInstances);
-
-
 }
