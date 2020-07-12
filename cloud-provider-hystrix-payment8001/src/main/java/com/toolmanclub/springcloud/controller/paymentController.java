@@ -1,5 +1,6 @@
 package com.toolmanclub.springcloud.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.toolmanclub.springcloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,6 +41,14 @@ public class paymentController {
     public String paymentInfo_Timeout(@PathVariable("id") Integer id) {
         String result = paymentService.paymentInfo_Timeout(id);
         log.info("******result" + result);
+        return result;
+    }
+
+    //====服务熔断
+    @GetMapping("payment/circuit/{id}")
+    public String paymentCircuitBreak(@PathVariable("id") Integer id) {
+        String result = paymentService.paymentCircuitBreaker(id);
+        log.info(result);
         return result;
     }
 }
