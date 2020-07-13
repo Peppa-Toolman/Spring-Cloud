@@ -1,0 +1,4 @@
+com\toolmanclub\springcloud\controller\OrderHystrixController.class
+com\toolmanclub\springcloud\service\PaymentFallbackService.class
+com\toolmanclub\springcloud\service\OrderHystrixService.class
+com\toolmanclub\springcloud\OrderHystrixMain80.class
