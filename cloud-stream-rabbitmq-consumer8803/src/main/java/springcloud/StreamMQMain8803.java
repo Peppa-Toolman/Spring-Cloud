@@ -1,4 +1,4 @@
-package com.toolmanclub.spirngcloud;
+package springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,13 +6,14 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author Yujie Wang
- * @date 2020/7/12 12:23
+ * @date 2020/7/13 20:06
  */
 @EnableEurekaClient
 @SpringBootApplication
-public class ConfigClientMain3355 {
+public class StreamMQMain8803 {
 
     public static void main(String[] args) {
-        SpringApplication.run(ConfigClientMain3355.class, args);
+
+        SpringApplication.run(StreamMQMain8803.class, args);
     }
 }

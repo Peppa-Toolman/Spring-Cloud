@@ -1,22 +1,19 @@
 package com.toolmanclub.springcloud;
 
-import com.toolmanclub.springcloud.myrule.MySelfRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  * @author Yujie Wang
- * @date 2020/7/8 9:59
+ * @date 2020/7/12 23:35
  */
-@SpringBootApplication(exclude = MySelfRule.class)
 @EnableEurekaClient
-//@RibbonClients(
-//        @RibbonClient(name = "CLOUD-PAYMENT-SERVICE", configuration = MySelfRule.class)
-//)
-public class OrderMain80 {
+@SpringBootApplication
+public class CloudConfigClient3355 {
 
     public static void main(String[] args) {
-        SpringApplication.run(OrderMain80.class, args);
+
+        SpringApplication.run(CloudConfigClient3355.class,args);
     }
 }
