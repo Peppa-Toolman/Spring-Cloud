@@ -5,10 +5,11 @@ spring:
         name: cloud-stream-provider
     cloud:
         stream:
-            bindings:
-                output:
-                    destination: studyExchange
-                    content-type: application/json
+            bindings: #服务的整合处理
+                output: #通道的名称
+                    destination: studyExchange #使用StudyExchange名称定义
+                    content-type: application/json  #设置消息类型,本次为json,文本设置为"text/plain)
+            default-binder: rabbit
     rabbitmq:
         host: 81.68.76.155
         port: 5672

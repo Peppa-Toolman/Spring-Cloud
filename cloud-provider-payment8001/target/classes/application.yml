@@ -10,7 +10,13 @@ spring:
         url: jdbc:mysql://81.68.76.155:3306/springboot?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
         username: root
         password: 3306
-
+    # sleuth
+    zipkin:
+        base-url: http://81.68.76.155:9411
+    sleuth:
+        sampler:
+            # 采样率介于0-1之间,1表示全部收集
+            probability: 1
 mybatis:
     mapper-locations: classpath:mybatis/mapper/*.xml
     type-aliases-package: com.toolmanclub.springcloud.com.toolmanclub.springboot.entities

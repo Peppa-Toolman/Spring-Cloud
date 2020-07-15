@@ -1,0 +1,5 @@
+com\toolmanclub\springcloud\service\PaymentService.class
+com\toolmanclub\springcloud\config\ApplicationContextConfig.class
+com\toolmanclub\springcloud\service\fallback\PaymentFallbackService.class
+com\toolmanclub\springcloud\controller\CircleBreakerController.class
+com\toolmanclub\springcloud\OrderMain84.class
